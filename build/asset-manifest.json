@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0444f5f0.css",
+    "main.js": "/static/js/main.55cdd93b.js",
+    "static/media/damir-bosnjak.jpg": "/static/media/damir-bosnjak.efcaca50b633c2ba2ba9.jpg",
+    "static/media/clem-onojeghuo-2.jpg": "/static/media/clem-onojeghuo-2.d16702ce00aa38f275c0.jpg",
+    "static/media/ayo-ogunseinde-2.jpg": "/static/media/ayo-ogunseinde-2.f4af8f2c98f6968c5ae9.jpg",
+    "static/media/mike.jpg": "/static/media/mike.d34d0690a264ad046861.jpg",
+    "static/media/joe-gardner-2.jpg": "/static/media/joe-gardner-2.09841708956117e93a7b.jpg",
+    "static/media/nucleo-icons.eot": "/static/media/nucleo-icons.bd42d77b9672555647d1.eot",
+    "static/media/nucleo-icons.ttf": "/static/media/nucleo-icons.4466aeec3386b965a232.ttf",
+    "static/media/nucleo-icons.woff": "/static/media/nucleo-icons.8e954b749f951b654fc6.woff",
+    "static/media/nucleo-icons.woff2": "/static/media/nucleo-icons.ec16bc4cc4526801004d.woff2",
+    "static/media/logo.svg": "/static/media/logo.2d27ead7c10f774c5306bcf3c257a728.svg",
+    "index.html": "/index.html",
+    "main.0444f5f0.css.map": "/static/css/main.0444f5f0.css.map",
+    "main.55cdd93b.js.map": "/static/js/main.55cdd93b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0444f5f0.css",
+    "static/js/main.55cdd93b.js"
+  ]
+}
