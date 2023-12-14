@@ -1,62 +1,64 @@
-import React,{useState} from 'react'
-import '../assets/css/About.css'
-function Test() {
-    const [files, setFiles] = useState([]);
-  
-  const validFileType = (file) => {
-    const fileTypes = [
-      "image/apng",
-      "image/bmp",
-      "image/gif",
-      "image/jpeg",
-      "image/pjpeg",
-      "image/png",
-      "image/svg+xml",
-      "image/tiff",
-      "image/webp",
-      "image/x-icon",
-    ];
-    return fileTypes.includes(file.type);
-  };
-
-  const returnFileSize = (number) => {
-    if (number < 1024) {
-      return `${number} bytes`;
-    } else if (number >= 1024 && number < 1048576) {
-      return `${(number / 1024).toFixed(1)} KB`;
-    } else if (number >= 1048576) {
-      return `${(number / 1048576).toFixed(1)} MB`;
-    }
-  };
-
-  const handleFileChange = (e) => {
-    const fileList = e.target.files;
-    const fileListArray = Array.from(fileList);
-
-    setFiles(fileListArray);
-  };
+function Test({ message, onDialog, nameProduct }) {
   return (
-    <div className='content'>
-        <form method="post" enctype="multipart/form-data">
-  <div>
-    <label for="image_uploads">Choose images to upload (PNG, JPG)</label>
-    <input
-      type="file"
-      id="image_uploads"
-      name="image_uploads"
-      accept=".jpg, .jpeg, .png"
-      multiple />
-  </div>
-  <div class="preview">
-    <p>No files currently selected for upload</p>
-  </div>
-  <div>
-    <button>Submit</button>
-  </div>
-</form>
-
+    <div
+      style={{
+        position: "fixed",
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0",
+        backgroundColor: "rgba(0,0,0,0.5)"
+      }}
+      onClick={() => onDialog(false)}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)",
+          background: "white",
+          padding: "20px",
+          borderRadius: "10px"
+        }}
+      >
+        <h3 stlye={{ color: "#111", fontSize: "16px" }}>{message}</h3>
+        <h1 style={{ color: "blue", fontSize: "24px" }}>{nameProduct}</h1>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <button
+            onClick={() => onDialog(true)}
+            style={{
+              background: "red",
+              color: "white",
+              padding: "10px",
+              marginRight: "4px",
+              border: "none",
+              cursor: "pointer"
+            }}
+          >
+            Yes
+          </button>
+          <button
+            onClick={() => onDialog(false)}
+            style={{
+              background: "green",
+              color: "white",
+              padding: "10px",
+              marginLeft: "4px",
+              border: "none",
+              cursor: "pointer"
+            }}
+          >
+            No
+          </button>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
-
-export default Test
+export default Test;

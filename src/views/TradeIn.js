@@ -18,6 +18,7 @@ import {
   Table,
 } from "reactstrap";
 import Tables from "./Tables";
+import Test from "./Test";
 
 
 
@@ -106,6 +107,10 @@ function TradeIn() {
       console.error(error);
     }
   };
+  const [displayTest, setDisplayTest] = useState(false);
+
+  const handledisplay=() => {
+setDisplayTest(true)  }
   return (
     <>
       <div className="content">
@@ -154,7 +159,7 @@ function TradeIn() {
                         className="btn-round"
                         color="primary"
                         type="submit"
-                        onClick={handlePost}
+                        onClick={handledisplay}
                       >
                         Add TradeIn
                       </Button>
@@ -165,6 +170,8 @@ function TradeIn() {
             </Card>
           </Col>
         </Row>
+        {displayTest && <Test />}
+
         <div className="content">
           <Row>
             <Col md="12">

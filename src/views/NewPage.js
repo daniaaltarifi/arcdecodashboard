@@ -250,7 +250,11 @@ function NewPage() {
 
 
                           <td>
-                            <Button
+                          <img src={require("../assets/img/trash.png")}width={"37vh"} onClick={
+                                () => handleDelete(data.id, index) // Calling handleDelete with the product's _id and index
+                              }/>
+
+                            {/* <Button
                               className="btn-round"
                               color="danger"
                               type="button"
@@ -259,15 +263,17 @@ function NewPage() {
                               }
                             >
                               delete
-                            </Button>
-                            <Button
+                            </Button> */}
+                              <img src= {require("../assets/img/edit (1).png")} width={"45vh"}                              onClick={() => openUpdateForm(data.id)}
+/>
+                            {/* <Button
                               className="btn-round"
                               color="info"
                               type="button"
                               onClick={() => openUpdateForm(data.id)}
                             >
                               update
-                            </Button>
+                            </Button> */}
                           </td>
                         </tr>
                       </tbody>

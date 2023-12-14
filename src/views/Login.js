@@ -155,7 +155,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
           <input type="text" id="username" name="username" value={email}
             onChange={handleEmailChange} />
           <label htmlFor="password" >Password:</label>
-          <input type="password" id="password" name="password" value={password}
+          <input type="password" id="password" name="password"
             onChange={handlePasswordChange} />
           {!userFlag && (
             <p style={{ color: 'red' }}>

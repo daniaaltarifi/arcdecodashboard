@@ -165,7 +165,7 @@ function Case() {
           <Col md="12">
             <Card className="card-user">
               <CardHeader>
-                <CardTitle tag="h5">Cases</CardTitle>
+                <CardTitle tag="h5">Case</CardTitle>
               </CardHeader>
               <CardBody>
                 <Form>
@@ -269,7 +269,7 @@ function Case() {
               {isUpdateFormVisible && (
                 <div>
                   <CardHeader>
-                    <CardTitle tag="h5">Update Cases</CardTitle>
+                    <CardTitle tag="h5">Update Case</CardTitle>
                   </CardHeader>
                   <CardBody>
                     <Form >
@@ -307,7 +307,7 @@ function Case() {
                             type="button"
                             onClick={() => handleUpdate(updateAboutId)}
                           >
-                            Update Cases
+                            Update Case
                           </Button>
                           <Button
                           className="btn-round"

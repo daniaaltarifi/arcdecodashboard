@@ -52,12 +52,34 @@ function Partner() {
       .catch((error) => console.error('Error fetching image URLs:', error));
   }, []);
 
+  // const handleFileSelect = (e) => {
+  //   const fileInput = document.getElementById('imageInput');
+  //   const selectedFiles = Array.from(fileInput.files);
+  //   setImages(selectedFiles);
+  // };
   const handleFileSelect = (e) => {
     const fileInput = document.getElementById('imageInput');
     const selectedFiles = Array.from(fileInput.files);
-    setImages(selectedFiles);
+  
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'video/mp4', 'video/mpeg', 'video/quicktime'];
+  
+    // Loop through each selected file and check its type
+    const isValidFiles = selectedFiles.every(file => allowedTypes.includes(file.type));
+  
+    if (isValidFiles) {
+      // All selected files have valid types, you can process the files here
+      setImages(selectedFiles);
+    } else {
+      // At least one file type is not allowed
+      Toastify({
+        text: "Please upload valid image .",
+        duration: 3000,
+        gravity: "top",
+        position: 'right',
+        backgroundColor: "#CA1616",
+      }).showToast();
+    }
   };
-
   const handlePost = async () => {
 
     try {
@@ -215,11 +237,26 @@ function Partner() {
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setUpdateImage(file); // Update state with the selected file for update
 
-  };
+  const handleFileChange=(e)=>{
+    const fileList = e.target.files[0];
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'video/mp4', 'video/mpeg', 'video/quicktime'];
+ 
+    if (fileList && allowedTypes.includes(fileList.type)) {
+      // File type is allowed, you can process the file here
+      console.log('File uploaded:', fileList);
+      setUpdateImage(fileList); // Update state with the selected file for update
+    } else {
+      // File type is not allowed
+      Toastify({
+        text: "Please upload a valid image .",
+        duration: 3000, // Duration in milliseconds
+        gravity: "top", // 'top' or 'bottom'
+        position: 'right', // 'left', 'center', 'right'
+        backgroundColor: "#CA1616",
+      }).showToast();    // You can add your own error handling or UI updates here
+    }
+   }
   return (
     <>
       <div className="content">
@@ -286,7 +323,11 @@ function Partner() {
                           <img key={index} src={`http://localhost:8080/` + imageUrl.images} alt={`Image ${index}`} height={"30%"} width={"30%"} />
                         </td>
                         <td>
-                          <Button
+                        <img src={require("../assets/img/trash.png")}width={"37vh"} onClick={
+                              () => handleDelete(imageUrl.id, index) // Calling handleDelete with the product's _id and index
+                            }/>
+
+                          {/* <Button
                             className="btn-round"
                             color="danger"
                             type="button"
@@ -295,15 +336,16 @@ function Partner() {
                             }
                           >
                             delete
-                          </Button>
-                          <Button
+                          </Button> */}
+                            <img src= {require("../assets/img/edit (1).png")} width={"45vh"}onClick={() => openUpdateForm(imageUrl.id)}/>
+                          {/* <Button
                             className="btn-round"
                             color="info"
                             type="button"
                             onClick={() => openUpdateForm(imageUrl.id)}
                           >
                             update
-                          </Button>
+                          </Button> */}
                         </td>
                       </tr>
                     ))}

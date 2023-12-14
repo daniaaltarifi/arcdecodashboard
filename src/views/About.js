@@ -194,12 +194,80 @@ function About() {
 
   const handleFileimageleft = (e) => {
     const fileList = e.target.files[0];
-    setImageleft(fileList);
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'video/mp4', 'video/mpeg', 'video/quicktime'];
+
+  if (fileList && allowedTypes.includes(fileList.type)) {
+    // File type is allowed, you can process the file here
+    console.log('File uploaded:', fileList);
+    setImageleft(fileList); // Set the file to the state (if needed)
+  } else {
+    // File type is not allowed
+    Toastify({
+      text: "Please upload a valid image or video file.",
+      duration: 3000, // Duration in milliseconds
+      gravity: "top", // 'top' or 'bottom'
+      position: 'right', // 'left', 'center', 'right'
+      backgroundColor: "#CA1616",
+    }).showToast();    // You can add your own error handling or UI updates here
+  }
   };
   const handleFileimageright = (e) => {
     const fileList = e.target.files[0];
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'video/mp4', 'video/mpeg', 'video/quicktime'];
+
+  if (fileList && allowedTypes.includes(fileList.type)) {
+    // File type is allowed, you can process the file here
+    console.log('File uploaded:', fileList);
     setImageRight(fileList);
+  } else {
+    // File type is not allowed
+    Toastify({
+      text: "Please upload a valid image or video file.",
+      duration: 3000, // Duration in milliseconds
+      gravity: "top", // 'top' or 'bottom'
+      position: 'right', // 'left', 'center', 'right'
+      backgroundColor: "#CA1616",
+    }).showToast();    // You can add your own error handling or UI updates here
+  }
   };
+  const handleImageLeftTypeandSave=(e)=>{
+   const fileList = e.target.files[0];
+   const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'video/mp4', 'video/mpeg', 'video/quicktime'];
+
+   if (fileList && allowedTypes.includes(fileList.type)) {
+     // File type is allowed, you can process the file here
+     console.log('File uploaded:', fileList);
+   setImageleft(fileList)
+} else {
+     // File type is not allowed
+     Toastify({
+       text: "Please upload a valid image or video file.",
+       duration: 3000, // Duration in milliseconds
+       gravity: "top", // 'top' or 'bottom'
+       position: 'right', // 'left', 'center', 'right'
+       backgroundColor: "#CA1616",
+     }).showToast();    // You can add your own error handling or UI updates here
+   }
+  }
+  const handleImageRightTypeandSave=(e)=>{
+    const fileList = e.target.files[0];
+    const allowedTypes = ['image/jpeg', 'image/png', 'video/mp4', 'video/mpeg', 'video/quicktime'];
+ 
+    if (fileList && allowedTypes.includes(fileList.type)) {
+      // File type is allowed, you can process the file here
+      console.log('File uploaded:', fileList);
+    setImageRight(fileList)
+ } else {
+      // File type is not allowed
+      Toastify({
+        text: "Please upload a valid image or video file.",
+        duration: 3000, // Duration in milliseconds
+        gravity: "top", // 'top' or 'bottom'
+        position: 'right', // 'left', 'center', 'right'
+        backgroundColor: "#CA1616",
+      }).showToast();    // You can add your own error handling or UI updates here
+    }
+   }
   return (
     <>
       <div className="content">
@@ -247,7 +315,8 @@ function About() {
                         <input
                           type="file"
                           name="imageleft"
-                          onChange={(e) => setImageleft(e.target.files[0])} // Update state with the selected file
+                          accept="image/*,video/*"
+                          onChange={handleImageLeftTypeandSave} // Update state with the selected file
                         />
                       </FormGroup>
                      
@@ -259,7 +328,8 @@ function About() {
                           <Input
                             name="imageright"
                             type="file"
-                            onChange={(e) => setImageRight(e.target.files[0])} // Update state with the selected file
+                            accept="image/*,video/*"
+                            onChange={handleImageRightTypeandSave} // Update state with the selected file
                           // disabled={fileLimit}
                           />
 
@@ -303,6 +373,7 @@ function About() {
                       <th>paragraph right</th>
                       <th>image left</th>
                       <th>image right</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   {add &&
@@ -324,7 +395,11 @@ function About() {
                           </td>
 
                           <td>
-                            <Button
+                          <img src={require("../assets/img/trash.png")}width={"37vh"}  onClick={
+                                () => handleDelete(data.id, index) // Calling handleDelete with the product's _id and index
+                              }/>
+
+                            {/* <Button
                               className="btn-round"
                               color="danger"
                               type="button"
@@ -333,15 +408,16 @@ function About() {
                               }
                             >
                               delete
-                            </Button>
-                            <Button
+                            </Button> */}
+                              <img src= {require("../assets/img/edit (1).png")} width={"45vh"}onClick={() => openUpdateForm(data.id)}/>
+                            {/* <Button
                               className="btn-round"
                               color="info"
                               type="button"
                               onClick={() => openUpdateForm(data.id)}
                             >
                               update
-                            </Button>
+                            </Button> */}
                           </td>
                         </tr>
                       </tbody>
@@ -399,7 +475,7 @@ function About() {
                     </Row>
                     <Row>
                       <Col className="pl-1" md="4">
-                        <input type="file" onChange={handleFileimageleft} id="file-input" />
+                        <input type="file" onChange={handleFileimageleft} id="file-input"  accept="image/*,video/*"/>
                         <div className="preview">
                           {imageleft ? (
                             <div>
@@ -419,7 +495,7 @@ function About() {
                         </div>
                       </Col>
                       <Col className="pl-1" md="4">
-                        <input type="file" onChange={handleFileimageright} id="file-input" />
+                        <input type="file" onChange={handleFileimageright} id="file-input" accept="image/*,video/*" />
                         <div className="preview">
                           {imageright ? (
                             <div>

@@ -163,7 +163,7 @@ window.location.reload()
           <Col md="12">
             <Card className="card-user">
               <CardHeader>
-                <CardTitle tag="h5">Services</CardTitle>
+                <CardTitle tag="h5">Service</CardTitle>
               </CardHeader>
               <CardBody>
                 <Form>
@@ -268,7 +268,7 @@ window.location.reload()
             {isUpdateFormVisible && (
               <div>
                 <CardHeader>
-                  <CardTitle tag="h5">Update services</CardTitle>
+                  <CardTitle tag="h5">Update service</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Form >
@@ -306,7 +306,7 @@ window.location.reload()
                           type="button"
                           onClick={() => handleUpdate(updateAboutId)}
                         >
-                          Update services
+                          Update service
                         </Button>
                         <Button
                           className="btn-round"

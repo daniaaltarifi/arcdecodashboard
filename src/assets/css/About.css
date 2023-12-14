@@ -4,3 +4,12 @@
     overflow: hidden;
     margin-top: 10%;
   }
+  
+
+.main-panel >.content {
+     min-height: calc(0vh)
+  }
+
+
+
+  

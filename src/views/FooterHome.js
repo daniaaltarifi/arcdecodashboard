@@ -37,7 +37,7 @@ function FooterHome() {
             console.log(add)
             console.log("link1", data[0].link1)
         } catch (error) {
-            console.log(`Error getting Blog from frontend: ${error}`);
+            console.log(`Error getting Footer Home from frontend: ${error}`);
         }
     };
     useEffect(() => {
@@ -182,7 +182,26 @@ function FooterHome() {
             console.log(`Error in fetch edit data: ${error}`);
         }
     };
-
+  const handleFileChange = (e) => {
+    const fileList = e.target.files[0];
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'video/mp4', 'video/mpeg', 'video/quicktime'];
+     
+        if (fileList && allowedTypes.includes(fileList.type)) {
+          // File type is allowed, you can process the file here
+          console.log('File uploaded:', fileList);
+          setSocialmedia(fileList);
+        } else {
+          // File type is not allowed
+          Toastify({
+            text: "Please upload a valid image or video file.",
+            duration: 3000, // Duration in milliseconds
+            gravity: "top", // 'top' or 'bottom'
+            position: 'right', // 'left', 'center', 'right'
+            backgroundColor: "#CA1616",
+          }).showToast();    // You can add your own error handling or UI updates here
+        }
+       
+  };
     const handleDelete = async (id, index) => {
         try {
             const response = await axios.delete(
@@ -209,11 +228,25 @@ function FooterHome() {
             return `${(number / 1048576).toFixed(1)} MB`;
         }
     };
-
-    const handleFileChange = (e) => {
+    const handleFooterTypeandSave=(e)=>{
         const fileList = e.target.files[0];
-        setSocialmedia(fileList);
-    };
+        const allowedTypes = ['image/jpeg', 'image/png', 'video/mp4', 'video/mpeg', 'video/quicktime'];
+     
+        if (fileList && allowedTypes.includes(fileList.type)) {
+          // File type is allowed, you can process the file here
+          console.log('File uploaded:', fileList);
+          setSocialmedia(fileList)
+        } else {
+          // File type is not allowed
+          Toastify({
+            text: "Please upload a valid image .",
+            duration: 3000, // Duration in milliseconds
+            gravity: "top", // 'top' or 'bottom'
+            position: 'right', // 'left', 'center', 'right'
+            backgroundColor: "#CA1616",
+          }).showToast();    // You can add your own error handling or UI updates here
+        }
+       }
     return (
         <>
             <div className="content">
@@ -251,7 +284,7 @@ function FooterHome() {
                                                         required
                                                         name="social1"
                                                         type="file"
-                                                        onChange={(e) => setSocialmedia(e.target.files[0])} // Update state with the selected file
+                                                        onChange={handleFooterTypeandSave} // Update state with the selected file
                                                     // disabled={fileLimit}
                                                     />
 
@@ -314,7 +347,11 @@ function FooterHome() {
 
 
                                                     <td>
-                                                        <Button
+                                                    <img src={require("../assets/img/trash.png")}width={"37vh"}  onClick={
+                                                                () => handleDelete(blog.id, index) // Calling handleDelete with the product's _id and index
+                                                            }/>
+
+                                                        {/* <Button
                                                             className="btn-round"
                                                             color="danger"
                                                             type="button"
@@ -323,15 +360,16 @@ function FooterHome() {
                                                             }
                                                         >
                                                             delete
-                                                        </Button>
-                                                        <Button
+                                                        </Button> */}
+                                                          <img src= {require("../assets/img/edit (1).png")} width={"45vh"} onClick={() => openUpdateForm(blog.id)}/>
+                                                        {/* <Button
                                                             className="btn-round"
                                                             color="info"
                                                             type="button"
                                                             onClick={() => openUpdateForm(blog.id)}
                                                         >
                                                             update
-                                                        </Button>
+                                                        </Button> */}
                                                     </td>
                                                 </tr>
                                             </tbody>

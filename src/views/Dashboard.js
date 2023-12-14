@@ -44,7 +44,7 @@ function Dashboard() {
           const data = response.data;
           setFooterHome(data);
       } catch (error) {
-          console.log(`Error getting Blog from frontend: ${error}`);
+          console.log(`Error getting Footer Home from frontend: ${error}`);
       }
   };
   
@@ -111,7 +111,60 @@ function Dashboard() {
   return (
     <>
       <div className="content">
+        
         <Row>
+        <Col lg="3" md="6" sm="6">
+            <Card className="card-stats">
+              <CardBody>
+                <Row>
+                  <Col md="4" xs="5">
+                    <div className="icon-big text-center icon-warning">
+                      <i className="nc-icon nc-layout-11 text-primary" />
+                    </div>
+                  </Col>
+                  <Col md="8" xs="7">
+                    <div className="numbers">
+                      <p className="card-category">Header</p>
+                      <CardTitle tag="p">{header.length}</CardTitle>
+                      <p />
+                    </div>
+                  </Col>
+                 
+                </Row>
+               
+              </CardBody>
+              <CardFooter>
+                <hr />
+             
+              </CardFooter>
+            </Card>
+          </Col>
+          <Col lg="3" md="6" sm="6">
+            <Card className="card-stats">
+              <CardBody>
+                <Row>
+                  <Col md="4" xs="5">
+                    <div className="icon-big text-center icon-warning">
+                      <i className="nc-icon nc-book-bookmark " />
+                    </div>
+                  </Col>
+                  <Col md="8" xs="7">
+                    <div className="numbers">
+                      <p className="card-category">social slider</p>
+                      <CardTitle tag="p">{footerHome.length}</CardTitle>
+                      <p />
+                    </div>
+                  </Col>
+            
+                </Row>
+               
+              </CardBody>
+              <CardFooter>
+                <hr />
+             
+              </CardFooter>
+            </Card>
+          </Col>
           <Col lg="3" md="6" sm="6">
             <Card className="card-stats">
               <CardBody>
@@ -154,32 +207,6 @@ function Dashboard() {
                 <Row>
                   <Col md="4" xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-map-big text-success" />
-                    </div>
-                  </Col>
-                  <Col md="8" xs="7">
-                    <div className="numbers">
-                      <p className="card-category">partners</p>
-                      <CardTitle tag="p">{partner.length}</CardTitle>
-                      <p />
-                    </div>
-                  </Col>
-                </Row>
-              </CardBody>
-              <CardFooter>
-                <hr />
-                {/* <div className="stats">
-                  <i className="far fa-calendar" /> Last day
-                </div> */}
-              </CardFooter>
-            </Card>
-          </Col>
-          <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <Row>
-                  <Col md="4" xs="5">
-                    <div className="icon-big text-center icon-warning">
                       <i className="nc-icon nc-vector text-danger" />
                     </div>
                   </Col>
@@ -206,54 +233,27 @@ function Dashboard() {
                 <Row>
                   <Col md="4" xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-layout-11 text-primary" />
+                      <i className="nc-icon nc-map-big text-success" />
                     </div>
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
-                      <p className="card-category">Header</p>
-                      <CardTitle tag="p">{header.length}</CardTitle>
+                      <p className="card-category">partners</p>
+                      <CardTitle tag="p">{partner.length}</CardTitle>
                       <p />
                     </div>
                   </Col>
-                 
                 </Row>
-               
               </CardBody>
               <CardFooter>
                 <hr />
-             
+                {/* <div className="stats">
+                  <i className="far fa-calendar" /> Last day
+                </div> */}
               </CardFooter>
             </Card>
           </Col>
-        </Row>
-        <Row>
-        <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <Row>
-                  <Col md="4" xs="5">
-                    <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-book-bookmark " />
-                    </div>
-                  </Col>
-                  <Col md="8" xs="7">
-                    <div className="numbers">
-                      <p className="card-category">Footer Home</p>
-                      <CardTitle tag="p">{footerHome.length}</CardTitle>
-                      <p />
-                    </div>
-                  </Col>
-            
-                </Row>
-               
-              </CardBody>
-              <CardFooter>
-                <hr />
-             
-              </CardFooter>
-            </Card>
-          </Col>
+        
           <Col lg="3" md="6" sm="6">
             <Card className="card-stats">
               <CardBody>
@@ -270,6 +270,10 @@ function Dashboard() {
                       <p />
                     </div>
                   </Col>
+        </Row>
+        <Row>
+      
+        
                  
                 </Row>
                
